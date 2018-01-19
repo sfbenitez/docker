@@ -6,7 +6,8 @@ RUN apt-get update \
   && apt-get clean \
   && rm -r /var/lib/apt/lists/*;
 
-COPY ['index.html', '/var/www/html']
+
+COPY index.html /var/www/html
 EXPOSE 80
-ENTRYPOINT ['apache2ctl']
-CMD ['-D','foreground']
+ENTRYPOINT ["apache2ctl"]
+CMD ["-D","FOREGROUND"]
