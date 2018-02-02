@@ -1,19 +1,21 @@
 FROM debian
 MAINTAINER Sergio Ferrete Benítez sergioferretebenitez@gmail.com
-ENV DOCUMENTROOT=/var/www/html
-ENV SERVER_NAME=_
-ENV PORT=80
+ARG DOCUMENTROOT=/var/www/html
+ARG SERVER_NAME=_
+ENV DOCUMENTROOT=$DOCUMENTROOT
+ENV SERVER_NAME=$SERVER_NAME
 
-COPY index.html /var/www/html/index.html
-COPY css /var/www/html/css
+
+COPY index.html $DOCUMENTROOT/index.html
+COPY css $DOCUMENTROOT/css
 COPY run.sh /run.sh
 
 RUN apt-get update \
   && apt-get install -y nginx \
   && apt-get clean \
-  && rm -r /var/lib/apt/lists/* \
-  && chmod 700 /run.sh
+  && rm -r /var/lib/apt/lists/*
+RUN chmod 700 /run.sh
 
 
 EXPOSE 80
-ENTRYPOINT ["/run.sh"]
+CMD ["/run.sh"]
