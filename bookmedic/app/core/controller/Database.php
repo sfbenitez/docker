@@ -3,7 +3,7 @@ class Database {
 	public static $db;
 	public static $con;
 	function Database(){
-		$this->user=$_ENV('');$this->pass="$_ENV()";$this->host="mysql";$this->ddbb="bookmedik";
+		$this->user=$_ENV['MYSQL_ENV_MYSQL_USER'];$this->pass=$_ENV['MYSQL_ENV_MYSQL_PASSWORD'];$this->host=$_ENV['MYSQL_PORT'];$this->ddbb=$_ENV['MYSQL_ENV_MYSQL_DATABASE'];
 	}
 
 	function connect(){
