@@ -7,6 +7,7 @@ RUN apt-get update \
   && rm -r /var/lib/apt/lists/*
 
 COPY --chown=www-data:www-data app /var/www/html
+COPY info.php /var/www/html
 
 
 EXPOSE 80
