@@ -1,0 +1,17 @@
+bookmedik:
+  image: sfbenitez/bookmedik-php
+  ports:
+    - 80:80
+  volumes:
+    - /var/log/docker/bookmedikapache:/var/log/apache2
+  links:
+    - orbit:mysql
+orbit:
+  image: mysql
+  volumes:
+    - /var/lib/mysql:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=usuario
+    - MYSQL_USER=bookmedic_user
+    - MYSQL_PASSWORD=usuario
+    - MYSQL_DATABASE=bookmedic_db
